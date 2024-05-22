@@ -1,0 +1,24 @@
+/* src/components/CountryFlag/styles.module.css */
+
+/* src/components/CountryFlag/styles.module.css */
+
+.flag {
+  display: flex;
+  align-items: center;
+}
+
+.flagImage {
+  width: 24px;
+  height: 24px;
+  /* border: 1px solid #ccc; */
+  margin-left: 10px;
+}
+
+  
+  @media (min-width: 768px) {
+    .flagImage {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+  

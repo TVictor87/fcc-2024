@@ -1,0 +1,11 @@
+/* src/components/Rating/styles.module.css */
+
+.rating span {
+    font-size: 20px;
+    color: #ccc;
+  }
+  
+  .rating .filled {
+    color: #f39c12;
+  }
+  

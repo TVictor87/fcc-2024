@@ -1,0 +1,100 @@
+/* src/components/BookStore/styles.module.css */
+
+.bookstoreCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .bookstoreCard {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+  
+  .logo {
+    margin-bottom: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .logo {
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+  }
+  
+  .logoImage {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .header {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    flex-direction: row;
+  }
+  
+  .date {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .flagImage {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .footer {
+      justify-content: space-between;
+      margin-top: 0;
+      flex-direction: row;
+    }
+  
+    .flagImage {
+      margin-left: 10px;
+    }
+  }
+  
+  .rating {
+    margin-top: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .rating {
+      margin-top: 0;
+    }
+  }
+  
