@@ -8,8 +8,8 @@ This project is a Book Store application featuring a frontend built with ReactJS
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Running the Project](#running-the-project)
-  - [Backend](#run-backend)
-  - [Frontend](#run-frontend)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
 
