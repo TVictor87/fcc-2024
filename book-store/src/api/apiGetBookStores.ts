@@ -1,84 +1,58 @@
-// src/api/apiGetBookStores.ts
-import logo from '../logo.svg';
+import type { Book, BookStoreData, BookStoreResponse } from "./types";
+// import { fakeBookStores } from "../mock/fakeBookStores";
+import { STORES_API_URL } from "../config";
 
-export interface Book {
-    name: string;
-    author: string;
-  }
-  
-  export interface BookStoreData {
-    logo: string;
-    name: string;
-    books: Book[];
-    date: string;
-    website: string;
-    rating: number;
-    countryCode: string;
-  }
-  
-  export const apiGetBookStores = async (): Promise<BookStoreData[]> => {
-    const response = await fetch('http://localhost:3000/stores');
-    const data = await response.json();
+export const apiGetBookStores = async (): Promise<BookStoreData[]> => {
+  const response = await fetch(STORES_API_URL);
+  const jsonResponse = await response.json();
 
-    const bookStores: BookStoreData[] = data.data.map((store: any) => {
-      const storeBooks = store.relationships.books.data.map((book: any) => {
-        const bookDetail = data.included.find((item: any) => item.type === 'books' && item.id === book.id);
-        const authorDetail = data.included.find((item: any) => item.type === 'authors' && item.id === bookDetail.relationships.author.data.id);
-        return {
-          name: bookDetail.attributes.name,
-          author: authorDetail.attributes.fullName,
-        };
-      });
-  
-      const countryDetail = data.included.find((item: any) => item.type === 'countries' && item.id === store.relationships.countries.data.id);
-  
+  const bookStoresResponse: BookStoreResponse[] = jsonResponse?.data;
+  const includedResponse = jsonResponse?.included;
+
+  const bookStores: BookStoreData[] = bookStoresResponse.map(
+    (store: BookStoreResponse): BookStoreData => {
+      const storeBooks: Book[] = store.relationships.books?.data.map(
+        (book: Book): Book => {
+          // Get Book Detail
+          const bookDetail = includedResponse.find(
+            (item: any) => item.type === "books" && item.id === book.id
+          );
+
+          // Get Author Detail
+          const authorDetail = includedResponse.find(
+            (item: any) =>
+              item.type === "authors" &&
+              item.id === bookDetail.relationships.author.data.id
+          );
+          return {
+            id: book.id,
+            name: bookDetail.attributes.name,
+            author: authorDetail.attributes.fullName,
+            copiesSold: bookDetail.attributes.copiesSold,
+          };
+        }
+      );
+
+      // GetCountryCode
+      const countryCode = includedResponse.find(
+        (item: any) =>
+          item.type === "countries" &&
+          item.id === store.relationships.countries.data.id
+      )?.attributes?.code;
+
       return {
-        logo: store.attributes.storeImage,
+        storeImage: store.attributes.storeImage,
         name: store.attributes.name,
-        books: storeBooks,
-        date: store.attributes.establishmentDate,
+        establishmentDate: store.attributes.establishmentDate,
         website: store.attributes.website,
         rating: store.attributes.rating,
-        countryCode: countryDetail.attributes.code,
+
+        books: storeBooks,
+
+        countryCode: countryCode,
       };
-    });
-  
-    return bookStores;
-    // Mock data, replace with actual API call
-    // return [
-    //   {
-    //     logo: logo,
-    //     name: 'Book store name',
-    //     books: [
-    //       { name: 'Book Name 1', author: 'Author 1' },
-    //       { name: 'Book Name 2', author: 'Author 2' }
-    //     ],
-    //     date: '2018-11-22T00:00:00Z',
-    //     website: 'http://www.bookstore.com',
-    //     rating: 4,
-    //     countryCode: 'US'
-    //   },
-    //   {
-    //     logo: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19',
-    //     name: 'Book store name 2',
-    //     books: [
-    //       { name: 'Book Name 1', author: 'Author 1' },
-    //       { name: 'Book Name 2', author: 'Author 2' }
-    //     ],
-    //     date: '2018-11-22T00:00:00Z',
-    //     website: 'http://www.bookstore2.com',
-    //     rating: 5,
-    //     countryCode: 'GB'
-    //   },
-    //   {
-    //     logo: 'https://marketplace.canva.com/EAF-jFqBHBA/1/0/900w/canva-blue-book-reading-concept-phone-wallpaper-F51QYzgB6q0.jpg',
-    //     name: 'Book store name 3',
-    //     books: [],
-    //     date: '2018-11-22T00:00:00Z',
-    //     website: 'http://www.bookstore3.com',
-    //     rating: 0,
-    //     countryCode: 'CA'
-    //   }
-    // ];
-  };
-  
+    }
+  );
+
+  return bookStores;
+};

@@ -1,16 +1,10 @@
-/* src/components/CountryFlag/styles.module.css */
-
-/* src/components/CountryFlag/styles.module.css */
-
 .flag {
   display: flex;
   align-items: center;
 }
 
 .flagImage {
-  width: 24px;
-  height: 24px;
-  /* border: 1px solid #ccc; */
+  width: 40px;
   margin-left: 10px;
 }
 
