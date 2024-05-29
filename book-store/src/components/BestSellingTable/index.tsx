@@ -3,6 +3,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Book } from "../../api/types";
+import { BOOKS_PER_STORE } from "../../config";
 
 interface BestSellingTableProps {
   books: Book[];
@@ -21,7 +22,7 @@ const BestSellingTable: React.FC<BestSellingTableProps> = ({ books }) => {
           <tbody>
             {books
               .sort((a, b) => b.copiesSold - a.copiesSold)
-              .slice(0, 2)
+              .slice(0, BOOKS_PER_STORE)
               .map((book, index) => (
                 <tr key={index}>
                   <td>📖 {book.name}</td>

@@ -3,6 +3,7 @@ import { apiGetBookStores } from "./api/apiGetBookStores";
 import { BookStoreData } from "./api/types";
 import BookStore from "./components/BookStore";
 import "./App.css";
+import { APP_NAME, APP_VERSION } from "./config";
 
 const App: React.FC = () => {
   const [bookstores, setBookstores] = useState<BookStoreData[]>([]);
@@ -18,6 +19,9 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <h1>
+        {APP_NAME} - {APP_VERSION}
+      </h1>
       {bookstores.map((store: BookStoreData) => (
         <BookStore store={store} />
       ))}
