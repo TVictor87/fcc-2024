@@ -8,6 +8,8 @@ This project is a Book Store application that includes a frontend built with Rea
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Running the Project](#running-the-project)
+  - [Backend](#run-backend)
+  - [Frontend](#run-frontend)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
 - [API Endpoints](#api-endpoints)
@@ -28,18 +30,112 @@ Ensure you have the following installed on your machine:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/book-store.git
-cd book-store
+git clone https://github.com/TVictor87/fcc-2024.git
+cd fcc-2024
 ```
 
 2. Install dependencies for both frontend and backend:
 
 ```bash
-cd frontend
+cd book-store
 npm install
 
-cd ../backend
+cd ../book-store-api
 npm install
 
 cd ..
 ```
+
+## Running the Project
+
+Please run backend first, because we use it to get the data using API call
+
+### Backend
+
+To start the backend:
+
+```bash
+cd book-store-api
+npm start
+```
+
+This command will start the backend on http://localhost:3001.
+
+### Frontend
+
+To start the frontend:
+
+```bash
+cd book-store
+npm start
+```
+
+This command will start the frontend on http://localhost:3000
+
+## Project Structure
+
+book-store/
+├── node_modules/
+├── public/
+├── src/
+│ ├── api/
+│ │ ├── apiGetBookStores.ts
+│ │ ├── apiGetCountryFlag.ts
+│ │ └── types.d.ts
+│ ├── components/
+│ │ ├── BestSellingTable/
+│ │ │ ├── index.tsx
+│ │ │ └── styles.module.css
+│ │ ├── BookStore/
+│ │ │ ├── index.tsx
+│ │ │ └── styles.module.css
+│ │ ├── CountryFlag/
+│ │ │ ├── index.tsx
+│ │ │ └── styles.module.css
+│ │ └── Rating/
+│ │ ├── index.tsx
+│ │ └── styles.module.css
+│ ├── mock/
+│ │ └── fakeBookStores.ts
+│ ├── App.css
+│ ├── App.test.tsx
+│ ├── App.tsx
+│ ├── config.ts
+│ ├── index.css
+│ ├── index.tsx
+│ ├── react-app-env.d.ts
+│ ├── reportWebVitals.ts
+│ └── setupTests.ts
+├── .gitignore
+├── package-lock.json
+├── package.json
+└── README.md
+
+book-store-api/
+├── node_modules/
+├── .gitignore
+├── index.js
+├── package-lock.json
+├── package.json
+└── README.md
+
+## Configuration
+
+All URLs and static information are stored in the config.ts file in the frontend. This helps to manage and update URLs and static data easily.
+
+Please check file here
+
+```bash
+book-store/src/config.ts
+```
+
+The configuration file contains constants used throughout the application. These constants help manage URLs and static information in a centralized way, making it easier to maintain and update the application. Here's a breakdown of each constant:
+
+API_BASE_URL: The base URL for the backend API. This is the starting point for all API requests.
+STORES_API_URL: The URL endpoint to fetch store data. It is constructed by appending /stores to the API_BASE_URL.
+COUNTRY_FLAG_API_URL: The base URL for fetching country flag images. This URL is used to retrieve flag images based on the country code.
+
+APP_NAME: The name of the application. This can be used for display purposes throughout the app, such as in the header or title.
+APP_VERSION: The version of the application. This helps keep track of the current version of the app and can be useful for debugging and user support.
+
+BOOKS_PER_STORE: The maximum number of books to display for each store. This constant helps control the number of books shown in the UI, ensuring consistency and manageability.
