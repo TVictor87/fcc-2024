@@ -30,7 +30,7 @@ export interface Book {
 export interface BookstoreAttributes {
   storeImage: string;
   name: string;
-  establishmentDate: string;
+  establishmentDate: Date;
   website: string;
   rating: number;
 }

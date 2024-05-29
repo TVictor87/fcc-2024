@@ -43,7 +43,7 @@ export const apiGetBookStores = async (): Promise<BookStoreData[]> => {
       return {
         storeImage: store.attributes.storeImage,
         name: store.attributes.name,
-        establishmentDate: store.attributes.establishmentDate,
+        establishmentDate: new Date(store.attributes.establishmentDate),
         website: store.attributes.website,
         rating: store.attributes.rating,
 

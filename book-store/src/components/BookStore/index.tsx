@@ -33,8 +33,14 @@ const BookStore: React.FC<BookStoreProps> = ({ store }) => {
 
       <div className={styles.footer}>
         <span className={styles.date}>
-          {new Date(store.establishmentDate).toLocaleDateString("en-GB")} -{" "}
-          <a href={store.website}>{store.website}</a>
+          {store.establishmentDate
+            .toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            })
+            .replace(/\//g, ".")}{" "}
+          - <a href={store.website}>{store.website}</a>
         </span>
         <CountryFlag countryCode={store.countryCode} />
       </div>
