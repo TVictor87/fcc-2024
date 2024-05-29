@@ -152,6 +152,7 @@ Here's a breakdown of each constant:
 
 **API_BASE_URL:** The base URL for the backend API. This is the starting point for all API requests.
 **STORES_API_URL:** The URL endpoint to fetch store data. It is constructed by appending /stores to the API_BASE_URL.
+
 **COUNTRY_FLAG_API_URL:** The base URL for fetching country flag images. This URL is used to retrieve flag images based on the country code.
 
 **APP_NAME:** The name of the application. This can be used for display purposes throughout the app, such as in the header or title.
