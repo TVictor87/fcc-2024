@@ -40,7 +40,10 @@ const BookStore: React.FC<BookStoreProps> = ({ store }) => {
               year: "numeric",
             })
             .replace(/\//g, ".")}{" "}
-          - <a href={store.website}>{store.website}</a>
+          -{" "}
+          <a href={store.website} target="_blank" rel="noopener noreferrer">
+            {store.website}
+          </a>
         </span>
         <CountryFlag countryCode={store.countryCode} />
       </div>
