@@ -8,8 +8,8 @@ This project is a Book Store application featuring a frontend built with ReactJS
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Running the Project](#running-the-project)
-  - [Backend](#backend)
   - [Frontend](#frontend)
+  - [Backend](#backend)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
 
@@ -34,45 +34,41 @@ cd fcc-2024
 2. Install dependencies for both frontend and backend:
 
 ```bash
-cd book-store
 npm install
 
-cd ../book-store-api
-npm install
-
-cd ..
 ```
 
 ## Running the Project
 
 Please start the backend first, as the frontend relies on it to fetch data through API calls.
 
-### Backend
-
-To start the backend:
-
-```bash
-cd book-store-api
-npm start
-```
-
-This command will start the backend on http://localhost:3001.
-
 ### Frontend
 
-To start the frontend:
+To start the frontend + backend:
 
 ```bash
-cd book-store
 npm start
 ```
 
 This command will start the frontend on http://localhost:3000
+And the backend on http://localhost:3001
+
+### Backend
+
+To start the backend only:
+
+```bash
+npm run server
+```
+
+This command will start the backend on http://localhost:3001.
 
 ## Project Structure
 
 ```bash
 book-store/
+├── fake-server/
+│ └── index.js
 ├── node_modules/
 ├── public/
 ├── src/
@@ -110,16 +106,6 @@ book-store/
 └── README.md
 ```
 
-```bash
-book-store-api/
-├── node_modules/
-├── .gitignore
-├── index.js
-├── package-lock.json
-├── package.json
-└── README.md
-```
-
 ## Configuration
 
 All URLs and static information are stored in the config.ts file in the frontend. This helps to manage and update URLs and static data easily.
@@ -127,7 +113,7 @@ All URLs and static information are stored in the config.ts file in the frontend
 File location:
 
 ```bash
-book-store/src/config.ts
+/src/config.ts
 ```
 
 The configuration file contains constants used throughout the application. These constants help manage URLs and static information in a centralized way, making it easier to maintain and update the application.
